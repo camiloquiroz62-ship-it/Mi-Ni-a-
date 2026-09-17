@@ -33,13 +33,20 @@
             z-index: 10;
         }
 
-        .snoopy-box {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .img-box {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.2);
+        }
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         h1 { color: #d63384; margin-bottom: 5px; font-size: 1.8rem; }
@@ -59,9 +66,20 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        audio {
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 40px;
+            height: 100%;
+            border: 0;
         }
 
         .counter-box {
@@ -196,28 +214,23 @@
 <body>
 
     <div class="container">
-        <!-- Snoopy Enamorado Vectorial Integrado -->
-        <div class="snoopy-box">
-            <svg viewBox="0 0 100 100" width="130" height="130">
-                <path d="M50 85 C20 55 10 35 30 18 C42 8 50 22 50 22 C50 22 58 8 70 18 C90 35 80 55 50 85 Z" fill="#ff4d6d"/>
-                <path d="M42 38 C42 32 46 28 50 28 C54 28 58 32 58 38 C58 44 50 52 50 52 C50 52 42 44 42 38 Z" fill="#ffffff"/>
-                <text x="50" y="62" font-size="28" text-anchor="middle">🐶</text>
-            </svg>
+        <!-- Imagen Romántica de Wall-E y EVA -->
+        <div class="img-box">
+            <img src="https://i.pinimg.com/736x/87/40/6a/87406a4b1bb92a7fb4936384a6a57008.jpg" alt="Wall-E y EVA">
         </div>
 
         <h1>✨ 6 Meses Juntos ✨</h1>
         <p class="subtitle">Una dedicatoria especial para ti</p>
 
-        <!-- Reproductor MP3 Directo -->
+        <!-- Canción Oficial: Carín León - Desde Que Te Tengo -->
         <div class="music-box">
             <p>🎵 Carín León - Desde Que Te Tengo</p>
-            <audio controls id="bgMusic">
-                <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112188.mp3" type="audio/mpeg">
-                Tu navegador no soporta el reproductor.
-            </audio>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/S2C1eB7R-8Y?enablejsapi=1" title="Carín León - Desde Que Te Tengo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
 
-        <!-- Contador desde el 17 de Marzo de 2026 -->
+        <!-- Contador de tiempo -->
         <div class="counter-box">
             <h3>Tiempo construyendo nuestra historia</h3>
             <div class="timer" id="timer">Cargando tiempo...</div>
@@ -254,7 +267,6 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script>
-        // Fecha exacta de inicio: 17 de marzo de 2026
         const startDate = new Date("2026-03-17T00:00:00"); 
 
         function updateTimer() {
@@ -280,9 +292,6 @@
         function openLetter() {
             document.getElementById("letter").style.display = "block";
             document.getElementById("questionSection").style.display = "block";
-
-            const music = document.getElementById("bgMusic");
-            music.play().catch(() => {});
 
             setInterval(createFloatingItem, 400);
 
@@ -318,7 +327,7 @@
             const item = document.createElement("div");
             item.classList.add("floating-item");
             
-            const items = ["🦋", "❤️", "🌸", "✨", "💖", "🦋"];
+            const items = ["🤖", "❤️", "🌸", "✨", "💖", "🌱"];
             item.innerText = items[Math.floor(Math.random() * items.length)];
             
             item.style.left = Math.random() * 100 + "vw";
