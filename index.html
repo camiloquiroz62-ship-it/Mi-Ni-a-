@@ -1,12 +1,188 @@
-Mi niña hermosa.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Niña Hermosa ❤️</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0826, #3a1c40, #5c2547);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 10;
+        }
 
-Parece increíble que ya hayan pasado 6 meses desde que inicio esta aventura.
+        h1 { color: #ff758c; margin-bottom: 5px; font-size: 1.8rem; }
+        p.subtitle { color: #e0e0e0; font-size: 0.9rem; margin-bottom: 20px; }
 
-Hoy quiero darte las gracias con todo mi corazón por cada uno de los momentos que hemos compartido. Gracias por los días llenos de risas, locuras incluso esos días malos que hemos tenido. Pasarlos a tu lado me demostró que sin importar lo que venga o los obstáculos que se nos presenten, siempre te volvería a elegir y te seguiré amando cada día más.
+        /* Contador */
+        .counter-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px dashed #ff758c;
+        }
+        .counter-box h3 { font-size: 0.85rem; color: #ffb6c1; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .timer { font-size: 1.1rem; font-weight: bold; color: #fff; }
 
-Llegaste a mi vida para transformarla por completo. Te has convertido en lo mejor que me ha pasado y no hay día en el que no me saques una sonrisa con tus ocurrencias y tus loqueras. Tu forma de ser llena mis días de una alegría que no cambio por nada.
+        /* Sobre / Botón */
+        .envelope-btn {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 117, 140, 0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .envelope-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(255, 117, 140, 0.6);
+        }
 
-Quiero que nunca olvides que en mí no solo tienes a tu novio, sino también a tu mayor apoyo. Siempre voy a estar a tu lado respaldando cada uno de tus sueños y metas. Cuando sientas que las cosas se ponen difíciles o pienses que no puedes más, recuerda que ahí estaré yo para sostenerte, escucharte y recordarte lo increíble y fuerte que eres.
+        /* Carta oculta */
+        .letter {
+            display: none;
+            margin-top: 25px;
+            background: #fff;
+            color: #333;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: left;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-Te amo mucho con demasiado, mucho más de lo que las palabras pueden expresar. Gracias por estos seis meses tan maravillosos. Estoy feliz de lo que somos y de todo lo hermoso que nos queda por vivir juntos. 
+        /* Corazones Flotantes */
+        .heart-particle {
+            position: fixed;
+            top: -10vh;
+            font-size: 1.5rem;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(360deg); }
+        }
 
+        /* Reproductor de música */
+        .music-box {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ 6 Meses Juntos ✨</h1>
+        <p class="subtitle">Una pequeña sorpresa hecha especialmente para ti</p>
+
+        <!-- Contador de Tiempo -->
+        <div class="counter-box">
+            <h3>Tiempo construyendo nuestra historia</h3>
+            <div class="timer" id="timer">Cargando tiempo...</div>
+        </div>
+
+        <!-- Botón para Abrir Carta -->
+        <button class="envelope-btn" onclick="openLetter()">Presiona para abrir tu carta 💌</button>
+
+        <!-- Contenido de la Carta -->
+        <div class="letter" id="letter">
+            <p style="color: #e63946; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Mi niña hermosa,</p>
+            <p>Parece increíble que ya hayan pasado 6 meses desde que inició esta aventura.</p><br>
+            <p>Hoy quiero darte las gracias con todo mi corazón por cada uno de los momentos que hemos compartido. Gracias por los días llenos de risas, locuras e incluso esos días malos que hemos tenido. Pasarlos a tu lado me demostró que sin importar lo que venga o los obstáculos que se nos presenten, siempre te volvería a elegir y te seguiré amando cada día más.</p><br>
+            <p>Llegaste a mi vida para transformarla por completo. Te has convertido en lo mejor que me ha pasado y no hay día en el que no me saques una sonrisa con tus ocurrencias y tus loqueras. Tu forma de ser llena mis días de una alegría que no cambio por nada.</p><br>
+            <p>Quiero que nunca olvides que en mí no solo tienes a tu novio, sino también a tu mayor apoyo. Siempre voy a estar a tu lado respaldando cada uno de tus sueños y metas. Cuando sientas que las cosas se ponen difíciles o pienses que no puedes más, recuerda que ahí estaré yo para sostenerte, escucharte y recordarte lo increíble y fuerte que eres.</p><br>
+            <p>Te amo mucho con demasiado, mucho más de lo que las palabras pueden expresar. Gracias por estos seis meses tan maravillosos. Estoy feliz de lo que somos y de todo lo hermoso que nos queda por vivir juntos.</p>
+        </div>
+
+        <div class="music-box">
+            <p>🎵 Dale a la carta para comenzar la sorpresa</p>
+        </div>
+    </div>
+
+    <!-- Música de fondo suave (puedes cambiar la URL por tu canción MP3 preferida) -->
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112188.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Fecha de inicio (Calculada a 6 meses atrás desde hoy)
+        const startDate = new Date("2026-03-16T00:00:00"); 
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("timer").innerHTML = 
+                `${days} días, ${hours}h ${minutes}m ${seconds}s`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Función para abrir la carta, activar corazones y música
+        function openLetter() {
+            const letter = document.getElementById("letter");
+            const music = document.getElementById("bg-music");
+            
+            letter.style.display = "block";
+            music.play();
+
+            // Iniciar lluvia de corazones
+            setInterval(createHeart, 300);
+        }
+
+        // Lluvia de corazones
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart-particle");
+            heart.innerText = ["❤️", "💖", "✨", "💕", "🌸"][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
