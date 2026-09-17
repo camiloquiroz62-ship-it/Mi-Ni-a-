@@ -19,11 +19,10 @@
             position: relative;
         }
 
-        /* Contenedor principal */
         .container {
             width: 100%;
             max-width: 480px;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 2px solid #ffb6c1;
             border-radius: 25px;
@@ -34,8 +33,7 @@
             z-index: 10;
         }
 
-        /* Imagen de Snoopy enamorado con corazón */
-        .snoopy-header {
+        .snoopy-img {
             width: 150px;
             height: auto;
             margin-bottom: 10px;
@@ -45,7 +43,6 @@
         h1 { color: #d63384; margin-bottom: 5px; font-size: 1.8rem; }
         p.subtitle { color: #6c757d; font-size: 0.95rem; margin-bottom: 20px; }
 
-        /* Reproductor de Música Directo de YouTube */
         .music-box {
             background: #fff;
             border: 2px solid #ffccd5;
@@ -60,13 +57,7 @@
             font-weight: bold;
             margin-bottom: 8px;
         }
-        .iframe-container {
-            border-radius: 12px;
-            overflow: hidden;
-            height: 80px;
-        }
 
-        /* Contador */
         .counter-box {
             background: #fff0f5;
             padding: 15px;
@@ -77,7 +68,6 @@
         .counter-box h3 { font-size: 0.85rem; color: #d63384; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
         .timer { font-size: 1.15rem; font-weight: bold; color: #4a4a4a; }
 
-        /* Botón de apertura */
         .envelope-btn {
             background: linear-gradient(45deg, #ff758c, #ff7eb3);
             border: none;
@@ -95,7 +85,6 @@
             box-shadow: 0 8px 20px rgba(255, 117, 140, 0.6);
         }
 
-        /* Carta de amor */
         .letter {
             display: none;
             margin-top: 25px;
@@ -116,7 +105,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Sección de Pregunta al final */
         .question-section {
             display: none;
             margin-top: 25px;
@@ -163,7 +151,6 @@
             transition: all 0.2s ease;
         }
 
-        /* Modal / Mensaje de Aceptación */
         .modal {
             display: none;
             position: fixed;
@@ -186,7 +173,6 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Elementos Flotantes (Mariposas, Corazones y Detalles) */
         .floating-item {
             position: fixed;
             top: -10vh;
@@ -204,30 +190,26 @@
 <body>
 
     <div class="container">
-        <!-- Snoopy enamorado sosteniendo un corazón -->
-        <img src="https://upload.wikimedia.org/wikipedia/en/2/22/Snoopy_Peanuts.png" alt="Snoopy enamorado" class="snoopy-header">
+        <!-- Imagen Directa de Snoopy con Corazón -->
+        <img src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f4d6.png" alt="Snoopy Amor" class="snoopy-img" id="snoopyImg">
 
         <h1>✨ 6 Meses Juntos ✨</h1>
         <p class="subtitle">Una dedicatoria especial para ti</p>
 
-        <!-- Reproductor con la canción exacta de Carín León desde YouTube -->
+        <!-- Reproductor de YouTube habilitado para reproducción externa -->
         <div class="music-box">
             <p>🎵 Carín León - Desde Que Te Tengo</p>
-            <div class="iframe-container">
-                <iframe width="100%" height="80" src="https://www.youtube.com/embed/8-WbV_xX_8E?enablejsapi=1" title="Desde Que Te Tengo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/p1aR9aD7R6c" title="Carin Leon - Desde Que Te Tengo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;"></iframe>
         </div>
 
-        <!-- Contador exacto -->
+        <!-- Contador exacto desde el 17 de marzo de 2026 -->
         <div class="counter-box">
             <h3>Tiempo construyendo nuestra historia</h3>
             <div class="timer" id="timer">Cargando tiempo...</div>
         </div>
 
-        <!-- Botón para abrir la carta -->
         <button class="envelope-btn" onclick="openLetter()">Presiona para abrir tu carta 💌</button>
 
-        <!-- Carta de Amor -->
         <div class="letter" id="letter">
             <p style="color: #d63384; font-size: 1.15rem; font-weight: bold; margin-bottom: 10px;">Mi niña hermosa,</p>
             <p>Parece increíble que ya hayan pasado 6 meses desde que inició esta aventura.</p><br>
@@ -236,7 +218,6 @@
             <p>Quiero que nunca olvides que en mí no solo tienes a tu novio, sino también a tu mayor apoyo. Siempre voy a estar a tu lado respaldando cada uno de tus sueños y metas. Cuando sientas que las cosas se ponen difíciles o pienses que no puedes más, recuerda que ahí estaré yo para sostenerte, escucharte y recordarte lo increíble y fuerte que eres.</p><br>
             <p>Te amo mucho con demasiado, mucho más de lo que las palabras pueden expresar. Gracias por estos seis meses tan maravillosos. Estoy feliz de lo que somos y de todo lo hermoso que nos queda por vivir juntos.</p>
 
-            <!-- Pregunta interactiva -->
             <div class="question-section" id="questionSection">
                 <h4>¿Aceptas seguir construyendo esta hermosa historia juntos? 💖</h4>
                 <div class="btn-group">
@@ -247,7 +228,6 @@
         </div>
     </div>
 
-    <!-- Modal de confirmación al presionar SÍ -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <h2 style="color: #d63384; margin-bottom: 10px;">¡Sabía que dirías que sí! ❤️</h2>
@@ -256,11 +236,13 @@
         </div>
     </div>
 
-    <!-- Canvas para Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script>
-        // Fecha exacta de inicio: 17 de Marzo de 2026
+        // Carga la imagen de Snoopy asegurada desde Wikimedia
+        document.getElementById("snoopyImg").src = "https://upload.wikimedia.org/wikipedia/en/2/22/Snoopy_Peanuts.png";
+
+        // Fecha de inicio: 17 de Marzo de 2026
         const startDate = new Date("2026-03-17T00:00:00"); 
 
         function updateTimer() {
@@ -283,20 +265,16 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // Abrir la carta
         function openLetter() {
             document.getElementById("letter").style.display = "block";
             document.getElementById("questionSection").style.display = "block";
 
-            // Iniciar lluvia de mariposas y corazones
             setInterval(createFloatingItem, 400);
 
-            // Posicionar botón NO
             const btnNo = document.getElementById("btnNo");
             btnNo.style.left = "180px";
         }
 
-        // Mover el botón "No"
         function moveNoButton() {
             const btnNo = document.getElementById("btnNo");
             const x = Math.random() * (window.innerWidth - 120);
@@ -307,7 +285,6 @@
             btnNo.style.top = y + "px";
         }
 
-        // Acción al hacer clic en ¡SÍ, ACEPTO!
         function acceptLove() {
             document.getElementById("modal").style.display = "flex";
             
@@ -322,7 +299,6 @@
             document.getElementById("modal").style.display = "none";
         }
 
-        // Lluvia de elementos flotantes
         function createFloatingItem() {
             const item = document.createElement("div");
             item.classList.add("floating-item");
