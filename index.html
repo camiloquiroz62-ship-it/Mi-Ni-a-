@@ -33,20 +33,13 @@
             z-index: 10;
         }
 
-        .img-box {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            margin: 0 auto 15px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.2);
-        }
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .snoopy-box {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         h1 { color: #d63384; margin-bottom: 5px; font-size: 1.8rem; }
@@ -66,20 +59,9 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        audio {
             width: 100%;
-            height: 100%;
-            border: 0;
+            height: 40px;
         }
 
         .counter-box {
@@ -200,7 +182,7 @@
         .floating-item {
             position: fixed;
             top: -10vh;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             user-select: none;
             pointer-events: none;
             animation: fall linear forwards;
@@ -214,20 +196,37 @@
 <body>
 
     <div class="container">
-        <!-- Imagen Romántica de Wall-E y EVA -->
-        <div class="img-box">
-            <img src="https://i.pinimg.com/736x/87/40/6a/87406a4b1bb92a7fb4936384a6a57008.jpg" alt="Wall-E y EVA">
+        <!-- Ilustración limpia de Snoopy con Corazón -->
+        <div class="snoopy-box">
+            <svg viewBox="0 0 200 200" width="150" height="150">
+                <!-- Corazón gigante detrás -->
+                <path d="M100 170 C20 100 0 50 50 20 C75 5 100 30 100 30 C100 30 125 5 150 20 C200 50 180 100 100 170 Z" fill="#ff4d6d"/>
+                <!-- Cabeza de Snoopy -->
+                <ellipse cx="95" cy="80" rx="30" ry="22" fill="#ffffff" stroke="#000" stroke-width="3"/>
+                <ellipse cx="120" cy="85" rx="18" ry="14" fill="#ffffff" stroke="#000" stroke-width="3"/>
+                <!-- Oreja -->
+                <ellipse cx="75" cy="85" rx="10" ry="20" fill="#000000" transform="rotate(15 75 85)"/>
+                <!-- Nariz -->
+                <ellipse cx="136" cy="82" rx="5" ry="4" fill="#000000"/>
+                <!-- Ojo feliz -->
+                <path d="M98 75 Q103 70 108 75" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Sonrisa -->
+                <path d="M110 92 Q120 98 126 90" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Brazos abrazando -->
+                <path d="M85 102 C85 120 115 120 115 102" fill="#ffffff" stroke="#000" stroke-width="3"/>
+            </svg>
         </div>
 
         <h1>✨ 6 Meses Juntos ✨</h1>
         <p class="subtitle">Una dedicatoria especial para ti</p>
 
-        <!-- Canción Oficial: Carín León - Desde Que Te Tengo -->
+        <!-- Reproductor MP3 directo que NUNCA se bloquea -->
         <div class="music-box">
             <p>🎵 Carín León - Desde Que Te Tengo</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/S2C1eB7R-8Y?enablejsapi=1" title="Carín León - Desde Que Te Tengo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <audio controls id="bgMusic">
+                <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3" type="audio/mpeg">
+                Tu navegador no soporta el reproductor de audio.
+            </audio>
         </div>
 
         <!-- Contador de tiempo -->
@@ -293,7 +292,11 @@
             document.getElementById("letter").style.display = "block";
             document.getElementById("questionSection").style.display = "block";
 
-            setInterval(createFloatingItem, 400);
+            const music = document.getElementById("bgMusic");
+            music.play().catch(() => {});
+
+            // Lluvia de mariposas y corazones
+            setInterval(createFloatingItem, 350);
 
             const btnNo = document.getElementById("btnNo");
             btnNo.style.left = "180px";
@@ -327,7 +330,8 @@
             const item = document.createElement("div");
             item.classList.add("floating-item");
             
-            const items = ["🤖", "❤️", "🌸", "✨", "💖", "🌱"];
+            // Mariposas y detalles románticos
+            const items = ["🦋", "🦋", "❤️", "🌸", "✨", "💖"];
             item.innerText = items[Math.floor(Math.random() * items.length)];
             
             item.style.left = Math.random() * 100 + "vw";
